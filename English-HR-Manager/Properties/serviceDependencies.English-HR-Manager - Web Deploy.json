@@ -4,7 +4,7 @@
       "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Storage/storageAccounts/englishhrmanager",
       "type": "storage.azure",
       "connectionId": "bankholidays",
-      "secretStore": null
+      "secretStore": "AzureAppSettings"
     }
   }
 }

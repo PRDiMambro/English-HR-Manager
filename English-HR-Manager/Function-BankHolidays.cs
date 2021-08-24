@@ -23,7 +23,6 @@ namespace English_HR_Manager
                          "get",
                          Route = "bank-holidays/{year:int?}")]
             HttpRequest req,
-
             int? year)
         {
             string responseMessage = null;
@@ -46,7 +45,11 @@ namespace English_HR_Manager
                                                     ).ToArray()
                                      );
 
-            toBlob(, "bankholidays", "BankHolidays.csv", csv);
+            string scs = "DefaultEndpointsProtocol=https;" +
+                         "AccountName=englishhrmanager;" +
+                         "AccountKey=9O8WgXFUyoMxjB3BrjIhHGmtJkYrjnkz0ec5LKgP0aGO+e+BTq0eUaJ4S/P4QOvgA8OmD8VsCiVqkxo+269weg==;" +
+                         "BlobEndpoint=https://englishhrmanager.blob.core.windows.net/;TableEndpoint=https://englishhrmanager.table.core.windows.net/;QueueEndpoint=https://englishhrmanager.queue.core.windows.net/;FileEndpoint=https://englishhrmanager.file.core.windows.net/";
+            toBlob(scs, "bankholidays", "BankHolidays.csv", csv);
 
             responseMessage = csv;
             return await Task.FromResult(new OkObjectResult(responseMessage));
@@ -56,20 +59,16 @@ namespace English_HR_Manager
                        string blobName,
                        string text)
         {
-        var storageAccount = CloudStorageAccount.Parse(storageConnectionString);
-        var client = storageAccount.CreateCloudBlobClient();
-        var container = client.GetContainerReference(containerString);
-        var blob = container.GetBlockBlobReference(blobName);
-        using (CloudBlobStream x = blob.OpenWriteAsync().Result)
-        {
-            x.Write(System.Text.Encoding.Default.GetBytes(text.ToString() + "\n"));
-            x.Flush();
-            x.Close();
+            var storageAccount = CloudStorageAccount.Parse(storageConnectionString);
+            var client = storageAccount.CreateCloudBlobClient();
+            var container = client.GetContainerReference(containerString);
+            var blob = container.GetBlockBlobReference(blobName);
+            using (CloudBlobStream x = blob.OpenWriteAsync().Result)
+            {
+                x.Write(System.Text.Encoding.Default.GetBytes(text.ToString() + "\n"));
+                x.Flush();
+                x.Close();
+            }
         }
     }
-
-
-    }
-
-    
 }
