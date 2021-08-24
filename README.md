@@ -16,4 +16,4 @@ The Function delivers the dates two ways:
   
 2.1. For easier inspection, it outputs the csv formatted dates once triggered, so that if you open the url on a browser they'll be shown on the display window as a confirmation the function processed adequately.
   
-2.2. A [BankHolidays.csv]() file is delivered an Azure blob storage container, so it can be used later by other functions/apps.
+2.2. A [BankHolidays.csv](https://englishhrmanager.blob.core.windows.net/bankholidays/BankHolidays.csv) file is delivered an Azure blob storage container, so it can be used later by other functions/apps.
