@@ -9,9 +9,9 @@ This function gets the official United Kingdom bank holidays from a [gov.uk json
 #### 1. Bank Holidays Function - Trigger
 It's *HTTP triggered*, so it'll start when the following url is used:
 
-**[https://english-hr-manager.azurewebsites.net/api/bank-holidays/"year"]()**
+**[https://english-hr-manager.azurewebsites.net/api/bank-holidays/$year]()**
   
-Where you need to replace the *"year"* substring above by the desired year or it will return nothing.
+Where you need to replace the *$year* substring above by the desired year or it will return nothing.
 
   
 #### 2. Bank Holidays Function - Outputs
